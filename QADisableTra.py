@@ -81,12 +81,12 @@ def parser():
     if args.zk :
        DisableZK()
     else :
-       print ("Please select ZK true , if you want to diable ZK. Otherwise, ZK won't be disbaled") 
+       print ("Please select zk true , if you want to diable zk. Otherwise, zk won't be disbaled") 
 
     if args.rds:
        DisableRDS()
     else: 
-       print ("Please select ZK true , if you want to diable ZK. Otherwise, ZK won't be disbaled") 
+       print ("Please select rds true , if you want to diable rds. Otherwise, rds won't be disbaled") 
 
      
 if __name__ == '__main__':
