@@ -72,8 +72,8 @@ def parser():
     
     parser = argparse.ArgumentParser(description='Get Parameter')
     #commands = parser.add_subparsers(help="commands")
-    parser.add_argument('--zk', default=False)
-    parser.add_argument ('--rds', default=False)
+    parser.add_argument('--zk', default=False, action='store_true')
+    parser.add_argument ('--rds', default=False, action='store_true')
     
     args = parser.parse_args()
     #subparser = commands.add_parser("zk", description="Disable ZK Traffic")
