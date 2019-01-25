@@ -75,6 +75,7 @@ def parser():
     parser.add_argument('--zk', default=False)
     parser.add_argument ('--rds', default=False)
     
+    args = parser.parse_args()
     #subparser = commands.add_parser("zk", description="Disable ZK Traffic")
     #subparser.set_defaults(func= DisbaleZK)
     if args.zk :
@@ -89,6 +90,6 @@ def parser():
 
      
 if __name__ == '__main__':
-       args = parser()
+       parser()
        
    
