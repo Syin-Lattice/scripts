@@ -90,7 +90,5 @@ def parser():
      
 if __name__ == '__main__':
        args = parser()
-      # DisableZK()
-       DisableRDS()
        
    
