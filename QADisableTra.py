@@ -16,55 +16,55 @@ Instance='i-07d2a2d912bffe3e3'
   
 
 def DisableZK():
+        print ('disabled ZK')
+#       stack_parsed = source.describe_stacks()
+#       stack = stack_parsed['Stacks']
+#       i=0
+#       while(i<len(stack)):
+
+#       	   if (stack_parsed['Stacks'][i]['Name']== 'QAZookeeper'):
+#                stackID = stack_parsed['Stacks'][i]['StackId']
+#                print (stackID)
+#                i = len(stack)     
+#       i = i+1
+
+
+#       EC2instance_parsed = source.describe_instances(StackId=stackID)
+#       EC2instances = EC2instance_parsed['Instances']
+#       print (len(EC2instances))
+#       j=0
+#       Instances=[]
       
-      stack_parsed = source.describe_stacks()
-      stack = stack_parsed['Stacks']
-      i=0
-      while(i<len(stack)):
-
-      	   if (stack_parsed['Stacks'][i]['Name']== 'QAZookeeper'):
-               stackID = stack_parsed['Stacks'][i]['StackId']
-               print (stackID)
-               i = len(stack)     
-      i = i+1
-
-
-      EC2instance_parsed = source.describe_instances(StackId=stackID)
-      EC2instances = EC2instance_parsed['Instances']
-      print (len(EC2instances))
-      j=0
-      Instances=[]
-      
-      while(j<len(EC2instances)):
+#       while(j<len(EC2instances)):
       	   
-      	   Instance = EC2instance_parsed['Instances'][j]['Ec2InstanceId']
-      	   print (Instance)
-      	   #response = source1.modify_instance_attribute(InstanceId=Instance, Groups=Group)
-           #print(response)
-      	   j=j+1
+#       	   Instance = EC2instance_parsed['Instances'][j]['Ec2InstanceId']
+#       	   print (Instance)
+#       	   #response = source1.modify_instance_attribute(InstanceId=Instance, Groups=Group)
+#            #print(response)
+#       	   j=j+1
            
 
 
 
 def DisableRDS():       
-    
-      RDS_parsed = source2.describe_db_instances()
-      RDSinstances = RDS_parsed['DBInstances']
-      #print (RDSinstances)
-      print (len(RDSinstances))
-      x=0
-      rdsInstances=[]
+        print ('disabled RDS')
+#       RDS_parsed = source2.describe_db_instances()
+#       RDSinstances = RDS_parsed['DBInstances']
+#       #print (RDSinstances)
+#       print (len(RDSinstances))
+#       x=0
+#       rdsInstances=[]
       
-      while(x<len(RDSinstances)):
+#       while(x<len(RDSinstances)):
       	   
-      	   rdsInstance = (RDS_parsed['DBInstances'][x]['DBInstanceIdentifier'])
-      	   if (rdsInstance == 'lpi-data' or rdsInstance == 'lpi-encrypted' or rdsInstance== 'dd1a2q8s6mpoe0w'):
-      	   	   print ((RDS_parsed['DBInstances'][x]['VpcSecurityGroups']))
-      	   	   #response = source2.modify_db_instance(DBInstanceIdentifier=rdsInstance, VpcSecurityGroupIds=Group)
-      	   x=x+1
+#       	   rdsInstance = (RDS_parsed['DBInstances'][x]['DBInstanceIdentifier'])
+#       	   if (rdsInstance == 'lpi-data' or rdsInstance == 'lpi-encrypted' or rdsInstance== 'dd1a2q8s6mpoe0w'):
+#       	   	   print ((RDS_parsed['DBInstances'][x]['VpcSecurityGroups']))
+#       	   	   #response = source2.modify_db_instance(DBInstanceIdentifier=rdsInstance, VpcSecurityGroupIds=Group)
+#       	   x=x+1
        
            
-      print (len(rdsInstances))
+#       print (len(rdsInstances))
 
 
 
