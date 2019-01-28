@@ -6,65 +6,65 @@ import botocore
 #import time
 import argparse
 
-# REGION = 'us-east-1'
-# source = boto3.client('opsworks', region_name=REGION)
-# source1 = boto3.client('ec2', region_name=REGION)
-# source2 = boto3.client('rds', region_name=REGION)
-# Group=['sg-02f3d40e9527b4cb0']
-# Instance='i-07d2a2d912bffe3e3'
+REGION = 'us-east-1'
+source = boto3.client('opsworks', region_name=REGION)
+source1 = boto3.client('ec2', region_name=REGION)
+source2 = boto3.client('rds', region_name=REGION)
+Group=['sg-02f3d40e9527b4cb0']
+Instance='i-07d2a2d912bffe3e3'
 
   
 
 def DisableZK():
         print ('disabled ZK')
-#       stack_parsed = source.describe_stacks()
-#       stack = stack_parsed['Stacks']
-#       i=0
-#       while(i<len(stack)):
+      stack_parsed = source.describe_stacks()
+      stack = stack_parsed['Stacks']
+      i=0
+      while(i<len(stack)):
 
-#       	   if (stack_parsed['Stacks'][i]['Name']== 'QAZookeeper'):
-#                stackID = stack_parsed['Stacks'][i]['StackId']
-#                print (stackID)
-#                i = len(stack)     
-#       i = i+1
+      	   if (stack_parsed['Stacks'][i]['Name']== 'QAZookeeper'):
+               stackID = stack_parsed['Stacks'][i]['StackId']
+               print (stackID)
+               i = len(stack)     
+      i = i+1
 
 
-#       EC2instance_parsed = source.describe_instances(StackId=stackID)
-#       EC2instances = EC2instance_parsed['Instances']
-#       print (len(EC2instances))
-#       j=0
-#       Instances=[]
+      EC2instance_parsed = source.describe_instances(StackId=stackID)
+      EC2instances = EC2instance_parsed['Instances']
+      print (len(EC2instances))
+      j=0
+      Instances=[]
       
-#       while(j<len(EC2instances)):
+      while(j<len(EC2instances)):
       	   
-#       	   Instance = EC2instance_parsed['Instances'][j]['Ec2InstanceId']
-#       	   print (Instance)
-#       	   #response = source1.modify_instance_attribute(InstanceId=Instance, Groups=Group)
-#            #print(response)
-#       	   j=j+1
+      	   Instance = EC2instance_parsed['Instances'][j]['Ec2InstanceId']
+      	   print (Instance)
+      	   #response = source1.modify_instance_attribute(InstanceId=Instance, Groups=Group)
+           #print(response)
+      	   j=j+1
            
 
 
 
 def DisableRDS():       
         print ('disabled RDS')
-#       RDS_parsed = source2.describe_db_instances()
-#       RDSinstances = RDS_parsed['DBInstances']
-#       #print (RDSinstances)
-#       print (len(RDSinstances))
-#       x=0
-#       rdsInstances=[]
+      RDS_parsed = source2.describe_db_instances()
+      RDSinstances = RDS_parsed['DBInstances']
+      #print (RDSinstances)
+      print (len(RDSinstances))
+      x=0
+      rdsInstances=[]
       
-#       while(x<len(RDSinstances)):
+      while(x<len(RDSinstances)):
       	   
-#       	   rdsInstance = (RDS_parsed['DBInstances'][x]['DBInstanceIdentifier'])
-#       	   if (rdsInstance == 'lpi-data' or rdsInstance == 'lpi-encrypted' or rdsInstance== 'dd1a2q8s6mpoe0w'):
-#       	   	   print ((RDS_parsed['DBInstances'][x]['VpcSecurityGroups']))
-#       	   	   #response = source2.modify_db_instance(DBInstanceIdentifier=rdsInstance, VpcSecurityGroupIds=Group)
-#       	   x=x+1
+      	   rdsInstance = (RDS_parsed['DBInstances'][x]['DBInstanceIdentifier'])
+      	   if (rdsInstance == 'lpi-data' or rdsInstance == 'lpi-encrypted' or rdsInstance== 'dd1a2q8s6mpoe0w'):
+      	   	   print ((RDS_parsed['DBInstances'][x]['VpcSecurityGroups']))
+      	   	   #response = source2.modify_db_instance(DBInstanceIdentifier=rdsInstance, VpcSecurityGroupIds=Group)
+      	   x=x+1
        
            
-#       print (len(rdsInstances))
+      print (len(rdsInstances))
 
 
 
