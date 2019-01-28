@@ -7,6 +7,7 @@ source = boto3.client('opsworks', region_name=REGION)
 source1 = boto3.client('ec2', region_name=REGION)
 source2 = boto3.client('rds', region_name=REGION)
 Group=['sg-c77359bc', 'sg-d9d61ca4']  
+Group_2= ['sg-9fbd7fe5']
 
 def EnableZK():
       print ('Enabled ZK')
@@ -53,7 +54,7 @@ def EnableRDS():
       	   rdsInstance = (RDS_parsed['DBInstances'][x]['DBInstanceIdentifier'])
       	   if (rdsInstance == 'lpi-data' or rdsInstance == 'lpi-encrypted' or rdsInstance== 'dd1a2q8s6mpoe0w'):
       	   	   print ((RDS_parsed['DBInstances'][x]['VpcSecurityGroups']))
-      	   	   #response = source2.modify_db_instance(DBInstanceIdentifier=rdsInstance, VpcSecurityGroupIds=Group)
+      	   	   response = source2.modify_db_instance(DBInstanceIdentifier=rdsInstance, VpcSecurityGroupIds=Group_2)
       	   x=x+1
        
            
