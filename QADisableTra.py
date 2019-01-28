@@ -39,8 +39,8 @@ def DisableZK():
       	   
       	   Instance = EC2instance_parsed['Instances'][j]['Ec2InstanceId']
       	   print (Instance)
-      	   #response = source1.modify_instance_attribute(InstanceId=Instance, Groups=Group)
-           #print(response)
+      	   response = source1.modify_instance_attribute(InstanceId=Instance, Groups=Group)
+           print(response)
       	   j=j+1
            
 
