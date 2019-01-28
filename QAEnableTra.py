@@ -52,7 +52,7 @@ def EnableRDS():
       while(x<len(RDSinstances)):
       	   
       	   rdsInstance = (RDS_parsed['DBInstances'][x]['DBInstanceIdentifier'])
-      	   if (rdsInstance == 'lpi-data' or rdsInstance == 'lpi-encrypted' or rdsInstance== 'dd1a2q8s6mpoe0w'):
+      	   if (rdsInstance == 'lpi-data' or rdsInstance == 'lpi-encrypted'):
       	   	   print ((RDS_parsed['DBInstances'][x]['VpcSecurityGroups']))
       	   	   response = source2.modify_db_instance(DBInstanceIdentifier=rdsInstance, VpcSecurityGroupIds=Group_2)
       	   x=x+1
