@@ -1,0 +1,39 @@
+import boto3  
+import botocore
+
+REGION = 'us-east-1'
+source2 = boto3.client('rds', region_name=REGION)
+Group=['sg-0fdf44e4c70a6688f']
+
+
+
+def DisableRDS():       
+    
+      RDS_parsed = source2.describe_db_instances()
+      RDSinstances = RDS_parsed['DBInstances']
+      x=0
+      rdsInstances=[]
+      
+      while(x<len(RDSinstances)):
+      	   
+      	   rdsInstance = (RDS_parsed['DBInstances'][x]['DBInstanceIdentifier'])
+      	   if (rdsInstance == 'lpi-data' or rdsInstance == 'lpi-encrypted'):
+               print ((RDS_parsed['DBInstances'][x]['VpcSecurityGroups']))
+               print (RDS_parsed['DBInstances'][x]['DBClusterIdentifier'])
+               rdsCluster = (RDS_parsed['DBInstances'][x]['DBClusterIdentifier'])
+               print (rdsCluster)
+               try:
+      	   	        
+                      response = source2.modify_db_cluster(DBClusterIdentifier=rdsCluster,VpcSecurityGroupIds=Group)
+                      print (response)
+
+               except botocore.exceptions.ClientError as e:
+                      raise Exception("Could create cache cluster: %s" % e)
+
+      	   x=x+1
+     
+if __name__ == '__main__':
+
+       DisableRDS()
+       
+   
