@@ -1,0 +1,29 @@
+import boto3  
+import botocore
+
+REGION = 'us-east-1'
+source = boto3.client('redshift', region_name=REGION)
+Group=['sg-0fdf44e4c70a6688f']
+
+def DisableRedShift():       
+    
+      Redshift_parsed = source.describe_clusters()
+      Redshiftinstances = Redshift_parsed['Clusters']
+      print (len(Redshift_parsed))
+      #print (len(Redshiftinstances))
+      x=0
+      redshiftInstances=[]
+
+      while(x<len(Redshiftinstances)):
+
+             redshiftInstance = (Redshift_parsed['Clusters'][x]['ClusterIdentifier'])
+             print (redshiftInstance)
+             response = source.modify_cluster(ClusterIdentifier=redshiftInstance, VpcSecurityGroupIds=Group)
+             print (response)
+             x=x+1
+
+     
+if __name__ == '__main__':
+       DisableRedShift()
+       
+   
