@@ -17,7 +17,7 @@ def DisableRDS():
       while(x<len(RDSinstances)):
       	   
       	   rdsInstance = (RDS_parsed['DBInstances'][x]['DBInstanceIdentifier'])
-      	   if (rdsInstance == 'lpi-data' or rdsInstance == 'lpi-encrypted'):
+      	   if (rdsInstance == 'lpi-encrypted'):
                print ((RDS_parsed['DBInstances'][x]['VpcSecurityGroups']))
                print (RDS_parsed['DBInstances'][x]['DBClusterIdentifier'])
                rdsCluster = (RDS_parsed['DBInstances'][x]['DBClusterIdentifier'])
