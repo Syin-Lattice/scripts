@@ -27,7 +27,7 @@ def RevertRedShift():
              x=x+1
              
 def TriggerAlert(redshiftInstance):
-    slack_client = SlackClient('xoxp-3476656916-50579388403-388759496705-dbe71886b6d72fa0f634e74e55b5847e')
+    slack_client = SlackClient('xoxp-3476656916-50579388403-555467722898-3d5709f170eec686c6491b5c07244a23')
     slack_client.api_call(
                           "chat.postMessage",
                           channel="C1SSLBB9C",
