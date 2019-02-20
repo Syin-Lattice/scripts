@@ -29,24 +29,12 @@ def DisableRDS():
       	   	        
                       response = source2.modify_db_cluster(DBClusterIdentifier=rdsCluster,VpcSecurityGroupIds=Group)
                       print (response)
-                      TriggerAlter()
 
                except botocore.exceptions.ClientError as e:
                       raise Exception("Could create cache cluster: %s" % e)
 
       	   x=x+1
 
-
-
-
-def TriggerAlert():
-    slack_client = SlackClient('xoxp-3476656916-50579388403-555467722898-3d5709f170eec686c6491b5c07244a23')
-    slack_client.api_call(
-                          "chat.postMessage",
-                          channel="C1SSLBB9C",
-                          text="The traffic of instance lpi-encrypted is disabled",
-                          username='QADisableRDSAlert'
-                          )
 
 if __name__ == '__main__':
 
