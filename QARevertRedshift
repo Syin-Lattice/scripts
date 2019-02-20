@@ -23,7 +23,7 @@ def DisableRedShift():
                   TriggerAlert(redshiftInstance)
                   print (response)
              except botocore.exceptions.ClientError as e:
-                        raise Exception("Could create cache cluster: %s" % e)
+                  raise Exception("Could create cache cluster: %s" % e)
              x=x+1
              
 def TriggerAlert(redshiftInstance):
