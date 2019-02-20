@@ -1,5 +1,8 @@
 import boto3  
 import botocore
+import os
+from slackclient import SlackClient
+
 
 REGION = 'us-east-1'
 source = boto3.client('redshift', region_name=REGION)
@@ -18,9 +21,25 @@ def DisableRedShift():
 
              redshiftInstance = (Redshift_parsed['Clusters'][x]['ClusterIdentifier'])
              print (redshiftInstance)
-             response = source.modify_cluster(ClusterIdentifier=redshiftInstance, VpcSecurityGroupIds=Group)
-             print (response)
+             try:
+                  response = source.modify_cluster(ClusterIdentifier=redshiftInstance, VpcSecurityGroupIds=Group)
+                  TriggerAlert(redshiftInstance)
+                  print (response)
+             except botocore.exceptions.ClientError as e:
+                      raise Exception("Could create cache cluster: %s" % e)
+                      
              x=x+1
+
+def TriggerAlert(redshiftInstance):
+    slack_client = SlackClient('xoxp-3476656916-50579388403-388759496705-dbe71886b6d72fa0f634e74e55b5847e')
+    slack_client.api_call(
+                          "chat.postMessage",
+                          channel="C1SSLBB9C",
+                          text="The traffic of rds instance" + redshiftInstance+ "is disabled",
+                          username='QADisableRDSAlert'
+                          )
+
+       
 
      
 if __name__ == '__main__':
