@@ -35,7 +35,7 @@ def TriggerAlert(redshiftInstance):
     slack_client.api_call(
                           "chat.postMessage",
                           channel="C1SSLBB9C",
-                          text="The traffic of rds instance" + redshiftInstance+ "is disabled",
+                          text="The traffic of rds instance " + redshiftInstance+ " is disabled",
                           username='QADisableRDSAlert'
                           )
 
