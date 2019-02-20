@@ -1,5 +1,7 @@
 import boto3
 import botocore
+import os
+from slackclient import SlackClient
 
 REGION = 'us-east-1'
 source2 = boto3.client('rds', region_name=REGION)
@@ -27,11 +29,23 @@ def EnableRDS():
                     
                       response = source2.modify_db_cluster(DBClusterIdentifier=rdsCluster,VpcSecurityGroupIds=Group)
                       print (response)
+                      TriggerAlter()
 
             except botocore.exceptions.ClientError as e:
                       raise Exception("Could create cache cluster: %s" % e)
 
         x=x+1
+        
+       
+def TriggerAlert():
+    slack_client = SlackClient('xoxp-3476656916-50579388403-388759496705-dbe71886b6d72fa0f634e74e55b5847e')
+    slack_client.api_call(
+                          "chat.postMessage",
+                          channel="C1SSLBB9C",
+                          text="The traffic of instance lpi-encrypted is reverted",
+                          username='QARevertRDSAlert'
+                          )
+ 
                             
 
 if __name__ == '__main__':
