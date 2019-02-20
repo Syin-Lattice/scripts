@@ -29,7 +29,7 @@ def DisableRDS():
       	   	        
                       response = source2.modify_db_cluster(DBClusterIdentifier=rdsCluster,VpcSecurityGroupIds=Group)
                       print (response)
-                      TriggerAlter
+                      TriggerAlter()
 
                except botocore.exceptions.ClientError as e:
                       raise Exception("Could create cache cluster: %s" % e)
