@@ -1,5 +1,7 @@
 import boto3  
-import botocore  
+import botocore
+import os
+from slackclient import SlackClient
 
 REGION = 'us-east-1'
 source = boto3.client('redshift', region_name=REGION)
